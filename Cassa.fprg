@@ -15,7 +15,7 @@
             <declare name="prezzo" type="Real" array="False" size=""/>
             <declare name="totale" type="Real" array="False" size=""/>
             <declare name="Contanti" type="Real" array="False" size=""/>
-            <assign variable="totale" expression="0"/>
+            <assign variable="totale" expression="2"/>
             <output expression="&quot;Ciao, Quanto costa? Metti il prezzo e premi il tasto 'enter' &quot;" newline="True"/>
             <input variable="prezzo"/>
             <if expression="prezzo &gt; 0">
