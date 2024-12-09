@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Cassa"/>
+        <attribute name="authors" value="ruolv"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-11-27 06:42:59 "/>
+        <attribute name="created" value="cnVvbHY7REVTS1RPUC1LQzlMNE5WOzIwMjQtMTEtMjc7IjA1OjQxOjE2ICI7MjgzMw=="/>
+        <attribute name="edited" value="cnVvbHY7REVTS1RPUC1LQzlMNE5WOzIwMjQtMTEtMjc7IjA2OjQyOjU5ICI7MTsyOTUw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="risposta" type="String" array="False" size=""/>
+            <declare name="prezzo" type="Real" array="False" size=""/>
+            <declare name="totale" type="Real" array="False" size=""/>
+            <declare name="Contanti" type="Real" array="False" size=""/>
+            <assign variable="totale" expression="0"/>
+            <output expression="&quot;Ciao, Quanto costa? Metti il prezzo e premi il tasto 'enter' &quot;" newline="True"/>
+            <input variable="prezzo"/>
+            <if expression="prezzo &gt; 0">
+                <then>
+                    <assign variable="totale" expression="totale+prezzo"/>
+                </then>
+                <else>
+                    <while expression="prezzo &lt;= 0">
+                        <output expression="&quot;il prezzo deve essere &gt; 0, ripeti la risposta e premi il tasto 'enter'&quot;" newline="True"/>
+                        <input variable="prezzo"/>
+                    </while>
+                    <assign variable="totale" expression="totale + prezzo"/>
+                </else>
+            </if>
+            <output expression="&quot;hai un'altro prodotto da aquistare? Rispondi scrivendo: si/no e premi dopo tasto 'enter'&quot;" newline="True"/>
+            <input variable="risposta"/>
+            <if expression="risposta =&quot;si&quot;">
+                <then>
+                    <while expression="risposta = &quot;si&quot;">
+                        <output expression="&quot;Quanto costa?&quot;" newline="True"/>
+                        <input variable="prezzo"/>
+                        <if expression="prezzo &gt; 0">
+                            <then>
+                                <assign variable="totale" expression="totale + prezzo"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Prezzo deve essere &gt; 0&quot;" newline="True"/>
+                            </else>
+                        </if>
+                        <output expression="&quot;hai un'altro prodotto da aquistare? Rispondi scrivendo: si/no e premi dopo tasto 'enter'&quot;" newline="True"/>
+                        <input variable="risposta"/>
+                        <while expression="risposta &lt;&gt; &quot;si&quot; and risposta &lt;&gt; &quot;no&quot;">
+                            <output expression="&quot;La risposta deve essere si oppure no, ripeti la risposta&quot;" newline="True"/>
+                            <input variable="risposta"/>
+                        </while>
+                    </while>
+                </then>
+                <else>
+                    <while expression="risposta &lt;&gt; &quot;no&quot;">
+                        <output expression="&quot;la risposta deve essere si oppure no, ripeti la risposta e premi il rasto 'enter'&quot;" newline="True"/>
+                        <input variable="risposta"/>
+                    </while>
+                </else>
+            </if>
+            <output expression="&quot;Da pagare &quot; &amp;totale &amp;&quot; euro. Quanto mi dai? Scrivi e premi il tasto 'enter'&quot;" newline="True"/>
+            <input variable="contanti"/>
+            <if expression="contanti &lt; totale">
+                <then>
+                    <output expression="&quot;devi aggiungere &quot; &amp;totale-contanti &amp; &quot; euro.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="contanti = totale">
+                        <then>
+                            <output expression="&quot;Grazie. Ciao&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Il resto &#232; &quot;&amp;contanti-totale &amp;&quot; euro. Grazie. Ciao&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
